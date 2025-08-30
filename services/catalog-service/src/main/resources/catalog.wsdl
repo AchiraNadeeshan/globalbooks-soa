@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CatalogService"
+             targetNamespace="http://catalog.globalbooks.com/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://catalog.globalbooks.com/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <types>
+        <xsd:schema targetNamespace="http://catalog.globalbooks.com/">
+            <xsd:element name="getBookDetails">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="isbn" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getBookDetailsResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="book">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="isbn" type="xsd:string"/>
+                                    <xsd:element name="title" type="xsd:string"/>
+                                    <xsd:element name="author" type="xsd:string"/>
+                                    <xsd:element name="price" type="xsd:double"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="GetBookDetailsRequest">
+        <part name="parameters" element="tns:getBookDetails"/>
+    </message>
+
+    <message name="GetBookDetailsResponse">
+        <part name="parameters" element="tns:getBookDetailsResponse"/>
+    </message>
+
+    <portType name="CatalogServicePortType">
+        <operation name="getBookDetails">
+            <input message="tns:GetBookDetailsRequest"/>
+            <output message="tns:GetBookDetailsResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="CatalogServiceBinding" type="tns:CatalogServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getBookDetails">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CatalogService">
+        <port name="CatalogServicePort" binding="tns:CatalogServiceBinding">
+            <soap:address location="http://localhost:8080/catalog-service/CatalogService"/>
+        </port>
+    </service>
+</definitions>

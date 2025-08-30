@@ -1,0 +1,14 @@
+[
+  {
+    "name": "orders.payments",
+    "durable": true,
+    "auto_delete": false,
+    "arguments": {}
+  },
+  {
+    "name": "orders.shipping",
+    "durable": true,
+    "auto_delete": false,
+    "arguments": {}
+  }
+]

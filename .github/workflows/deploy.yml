@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-soap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+      - name: Build SOAP service
+        run: mvn -f services/catalog-service/pom.xml clean install
+      - name: Deploy SOAP service (placeholder)
+        run: echo "Deploying SOAP service to Tomcat... (manual step for local setup)"
+
+  deploy-rest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 18
+        uses: actions/setup-java@v2
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+      - name: Build REST services
+        run: mvn -f services/orders-service/pom.xml clean install && mvn -f services/payments-service/pom.xml clean install && mvn -f services/shipping-service/pom.xml clean install
+      - name: Deploy REST services (placeholder)
+        run: echo "Deploying REST services to local environment... (manual step for local setup)"

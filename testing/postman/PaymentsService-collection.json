@@ -1,0 +1,24 @@
+{
+    "info": {
+        "_postman_id": "b1c2d3e4-f5a6-7890-1234-567890abcdef",
+        "name": "PaymentsService",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Process Payment (Triggered by RabbitMQ)",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8082/health",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8082",
+                    "path": ["health"]
+                }
+            },
+            "response": []
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PlaceOrderService"
+             targetNamespace="http://bpel.globalbooks.com/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://bpel.globalbooks.com/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <types>
+        <xsd:schema targetNamespace="http://bpel.globalbooks.com/">
+            <xsd:element name="placeOrder">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="isbn" type="xsd:string"/>
+                        <xsd:element name="quantity" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="placeOrderResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="orderId" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="PlaceOrderRequest">
+        <part name="parameters" element="tns:placeOrder"/>
+    </message>
+
+    <message name="PlaceOrderResponse">
+        <part name="parameters" element="tns:placeOrderResponse"/>
+    </message>
+
+    <portType name="PlaceOrderServicePortType">
+        <operation name="placeOrder">
+            <input message="tns:PlaceOrderRequest"/>
+            <output message="tns:PlaceOrderResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="PlaceOrderServiceBinding" type="tns:PlaceOrderServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="placeOrder">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="PlaceOrderService">
+        <port name="PlaceOrderServicePort" binding="tns:PlaceOrderServiceBinding">
+            <soap:address location="http://localhost:8084/ode/processes/PlaceOrderService"/>
+        </port>
+    </service>
+</definitions>

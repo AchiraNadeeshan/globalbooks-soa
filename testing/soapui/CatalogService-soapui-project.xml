@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapui-project name="CatalogService" resourceRoot="" soapui-version="5.7.0" xmlns="http://eviware.com/soapui/config">
+  <interface xsi:type="wsdlInterface" wsdl="http://localhost:8080/catalog-service/CatalogService?wsdl" name="CatalogServiceSoapBinding" bindingName="CatalogServiceSoapBinding" serviceName="CatalogService" portName="CatalogServicePort" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <operation name="getBookDetails" is  "request-response">
+      <request name="getBookDetails Request" outgoingWss="UsernameTokenPolicy">
+        <con:setting id="@name">getBookDetails Request</con:setting>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://catalog.globalbooks.com/CatalogServicePortType/getBookDetailsRequest"/>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://catalog.globalbooks.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cat:getBookDetails>
+         <isbn>1234567890</isbn>
+      </cat:getBookDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+      </request>
+    </operation>
+  </interface>
+  <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsse:UsernameToken wsu:Id="UsernameToken">
+      <wsse:Username>admin</wsse:Username>
+      <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</wsse:Password>
+    </wsse:UsernameToken>
+  </wsse:Security>
+</soapui-project>

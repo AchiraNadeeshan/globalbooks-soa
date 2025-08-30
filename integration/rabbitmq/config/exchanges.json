@@ -1,0 +1,8 @@
+[
+  {
+    "name": "orders",
+    "type": "topic",
+    "durable": true,
+    "auto_delete": false
+  }
+]

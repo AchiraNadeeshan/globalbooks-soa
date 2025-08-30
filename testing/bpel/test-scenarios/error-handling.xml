@@ -1,0 +1,11 @@
+<testScenario name="ErrorHandling">
+  <input>
+    <placeOrder xmlns="http://bpel.globalbooks.com/">
+      <isbn>INVALID_ISBN</isbn>
+      <quantity>1</quantity>
+    </placeOrder>
+  </input>
+  <expectedFault>
+    <faultName>InvalidISBNFault</faultName>
+  </expectedFault>
+</testScenario>

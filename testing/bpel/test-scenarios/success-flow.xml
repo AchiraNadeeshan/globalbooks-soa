@@ -1,0 +1,13 @@
+<testScenario name="SuccessFlow">
+  <input>
+    <placeOrder xmlns="http://bpel.globalbooks.com/">
+      <isbn>1234567890</isbn>
+      <quantity>1</quantity>
+    </placeOrder>
+  </input>
+  <expectedOutput>
+    <placeOrderResponse xmlns="http://bpel.globalbooks.com/">
+      <orderId>12345</orderId>
+    </placeOrderResponse>
+  </expectedOutput>
+</testScenario>

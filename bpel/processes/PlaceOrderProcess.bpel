@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="PlaceOrderProcess"
+         targetNamespace="http://bpel.globalbooks.com/"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:tns="http://bpel.globalbooks.com/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:catalog="http://catalog.globalbooks.com/">
+
+    <import namespace="http://catalog.globalbooks.com/" location="../services/catalog-service/src/main/resources/catalog.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://bpel.globalbooks.com/" location="./wsdl/PlaceOrderService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+
+    <partnerLinks>
+        <partnerLink name="client"
+                     partnerLinkType="tns:PlaceOrderLinkType"
+                     myRole="PlaceOrderService"/>
+        <partnerLink name="catalogService"
+                     partnerLinkType="catalog:CatalogLinkType"
+                     partnerRole="CatalogService"/>
+    </partnerLinks>
+
+    <variables>
+        <variable name="input" messageType="tns:PlaceOrderRequest"/>
+        <variable name="output" messageType="tns:PlaceOrderResponse"/>
+        <variable name="catalogInput" messageType="catalog:GetBookDetailsRequest"/>
+        <variable name="catalogOutput" messageType="catalog:GetBookDetailsResponse"/>
+    </variables>
+
+    <sequence>
+        <receive name="receiveInput" partnerLink="client" portType="tns:PlaceOrderServicePortType" operation="placeOrder" variable="input" createInstance="yes"/>
+        <assign name="prepareCatalogRequest">
+            <copy>
+                <from variable="input" part="parameters" query="/tns:placeOrder/isbn"/>
+                <to variable="catalogInput" part="parameters" query="/catalog:getBookDetails/isbn"/>
+            </copy>
+        </assign>
+        <invoke name="invokeCatalogService" partnerLink="catalogService" portType="catalog:CatalogServicePortType" operation="getBookDetails" inputVariable="catalogInput" outputVariable="catalogOutput"/>
+        <!-- Add logic to invoke OrdersService (REST) here -->
+        <assign name="prepareResponse">
+            <copy>
+                <from expression="'12345'"/>
+                <to variable="output" part="parameters" query="/tns:placeOrderResponse/orderId"/>
+            </copy>
+        </assign>
+        <reply name="replyOutput" partnerLink="client" portType="tns:PlaceOrderServicePortType" operation="placeOrder" variable="output"/>
+    </sequence>
+
+</process>

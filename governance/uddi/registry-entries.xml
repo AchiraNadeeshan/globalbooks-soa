@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uddi xmlns="urn:uddi-org:api_v3">
+  <businessEntity businessKey="uddi:globalbooks.com:globalbooks-business">
+    <name>GlobalBooks Inc.</name>
+    <description>GlobalBooks Inc. SOA Services</description>
+    <serviceBusinesses>
+      <businessService serviceKey="uddi:globalbooks.com:catalog-service" businessKey="uddi:globalbooks.com:globalbooks-business">
+        <name>CatalogService</name>
+        <description>SOAP service for retrieving book catalog details.</description>
+        <bindingTemplates>
+          <bindingTemplate bindingKey="uddi:globalbooks.com:catalog-service-binding" serviceKey="uddi:globalbooks.com:catalog-service">
+            <accessPoint useType="wsdlDeployment">http://localhost:8080/catalog-service/CatalogService?wsdl</accessPoint>
+          </bindingTemplate>
+        </bindingTemplates>
+      </businessService>
+      <businessService serviceKey="uddi:globalbooks.com:orders-service" businessKey="uddi:globalbooks.com:globalbooks-business">
+        <name>OrdersService</name>
+        <description>REST microservice for managing customer orders.</description>
+        <bindingTemplates>
+          <bindingTemplate bindingKey="uddi:globalbooks.com:orders-service-binding" serviceKey="uddi:globalbooks.com:orders-service">
+            <accessPoint useType="rest">http://localhost:8081/v1/orders</accessPoint>
+          </bindingTemplate>
+        </bindingTemplates>
+      </businessService>
+      <businessService serviceKey="uddi:globalbooks.com:payments-service" businessKey="uddi:globalbooks.com:globalbooks-business">
+        <name>PaymentsService</name>
+        <description>REST microservice for processing payments.</description>
+        <bindingTemplates>
+          <bindingTemplate bindingKey="uddi:globalbooks.com:payments-service-binding" serviceKey="uddi:globalbooks.com:payments-service">
+            <accessPoint useType="rest">http://localhost:8082</accessPoint>
+          </bindingTemplate>
+        </bindingTemplates>
+      </businessService>
+      <businessService serviceKey="uddi:globalbooks.com:shipping-service" businessKey="uddi:globalbooks.com:globalbooks-business">
+        <name>ShippingService</name>
+        <description>REST microservice for managing shipping.</description>
+        <bindingTemplates>
+          <bindingTemplate bindingKey="uddi:globalbooks.com:shipping-service-binding" serviceKey="uddi:globalbooks.com:shipping-service">
+            <accessPoint useType="rest">http://localhost:8083</accessPoint>
+          </bindingTemplate>
+        </bindingTemplates>
+      </businessService>
+    </serviceBusinesses>
+  </businessEntity>
+</uddi>

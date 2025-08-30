@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order",
+  "description": "An order for a book",
+  "type": "object",
+  "properties": {
+    "isbn": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "isbn",
+    "quantity"
+  ]
+}
