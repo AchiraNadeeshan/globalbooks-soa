@@ -185,7 +185,36 @@ BPEL_SERVICE_URL=http://localhost:8084/ode
 3.  **Configure Security:** Ensure the `Auth` tab (or WS-Security configuration) is set up with `Username: admin`, `Password: password`.
 4.  **Send Request:** Send the request. You should receive a successful response with book details.
 
-#### 8.2. Test REST Microservices with Postman
+#### 8.2. Testing the SOAP Service with SoapUI (No Project File)
+
+Instead of importing the XML (which is often tricky), you can test the service directly in SoapUI like this:
+
+1.  **Create a new SOAP project**
+    -   Open SoapUI → **File** → **New SOAP Project**.
+    -   **Project Name:** `CatalogService`.
+    -   **Initial WSDL:** `http://localhost:8080/catalog-service/CatalogService?wsdl`
+    -   Check “Create Requests” → **OK**.
+
+2.  **Send a test request**
+    -   Expand the created interface → `CatalogServicePortType` → `getBookDetails`.
+    -   Double-click the request → SoapUI will create a template request like:
+        ```xml
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://catalog.globalbooks.com/">
+           <soapenv:Header/>
+           <soapenv:Body>
+              <cat:getBookDetails>
+                 <isbn>?</isbn>
+              </cat:getBookDetails>
+           </soapenv:Body>
+        </soapenv:Envelope>
+        ```
+
+3.  **Replace `?` with `1234567890` or your test ISBN.**
+
+4.  **Run the request**
+    -   Click the green **Play** button → you should see the response from your running catalog service.
+
+#### 8.3. Test REST Microservices with Postman
 
 1.  **Import Collections:** Import the Postman collections from `testing/postman/`:
     -   `OrdersService-collection.json`
@@ -200,7 +229,7 @@ BPEL_SERVICE_URL=http://localhost:8084/ode
     -   Send the requests. These are basic health checks and should return `200 OK`.
     -   Verify the asynchronous message flow by checking the console logs of the `PaymentsService` and `ShippingService` after creating an order via `OrdersService`.
 
-#### 8.3. Test BPEL Orchestration
+#### 8.4. Test BPEL Orchestration
 
 1.  **Access ODE Console:** Open your web browser and navigate to `http://localhost:8084/ode`.
 2.  **Initiate Process:** Use a SOAP client (like SOAP UI) to send a request to the `PlaceOrderService` endpoint (`http://localhost:8084/ode/processes/PlaceOrderService`). You can use the `testing/bpel/test-scenarios/success-flow.xml` as a reference for the request payload.
