@@ -52,7 +52,7 @@ Modern Clients → REST OrdersService (Spring Boot Local) ←→ BPEL Orchestrat
 ### Local Development Environment
 - **Database**: PostgreSQL 17.5 (local installation)
 - **Message Broker**: RabbitMQ (local installation or Docker)
-- **Application Server**: Apache Tomcat 10.x (local installation)
+- **Application Server**: Apache Tomcat 9.x (local installation)
 - **BPEL Engine**: Apache ODE (local deployment)
 
 ### Cloud Migration Stack (Future Phase)
@@ -287,7 +287,7 @@ globalbooks-soa/
 
 ### Prerequisites
 - Java OpenJDK 18 with javac 18 installed
-- Apache Tomcat 10.x installed locally
+- Apache Tomcat 9.x installed locally
 - PostgreSQL 17.5 installed locally
 - RabbitMQ server installed locally (or Docker)
 - Apache ODE BPEL engine
@@ -304,7 +304,7 @@ DB_NAME_CATALOG=globalbooks_catalog
 DB_NAME_ORDERS=globalbooks_orders
 DB_NAME_PAYMENTS=globalbooks_payments
 DB_NAME_SHIPPING=globalbooks_shipping
-DB_USERNAME=admin
+DB_USERNAME=postgres
 DB_PASSWORD=secure_password
 
 # Local RabbitMQ
@@ -341,7 +341,7 @@ BPEL_SERVICE_URL=http://localhost:8084/ode
 - Install and configure PostgreSQL 17.5 locally
 - Create separate databases for each service
 - Install RabbitMQ server locally with management plugin
-- Configure Apache Tomcat 10.x for SOAP service deployment
+- Configure Apache Tomcat 9.x for SOAP service deployment
 - Set up Apache ODE BPEL engine locally
 - Create local startup and shutdown scripts
 
@@ -443,7 +443,7 @@ BPEL_SERVICE_URL=http://localhost:8084/ode
 ### Local Development Setup
 - [ ] PostgreSQL 17.5 installed and configured locally
 - [ ] RabbitMQ server running locally with management plugin
-- [ ] Apache Tomcat 10.x configured for SOAP service deployment
+- [ ] Apache Tomcat 9.x configured for SOAP service deployment
 - [ ] Apache ODE BPEL engine deployed and running locally
 - [ ] All services running on designated local ports
 
