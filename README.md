@@ -29,7 +29,7 @@ Modern Clients → REST OrdersService (Spring Boot Local) ←→ BPEL Orchestrat
     -   **OpenJDK 18:** For all REST microservices.
 -   **SOAP Framework:** JAX-WS (Contract-First)
 -   **REST Framework:** Spring Boot 3.x
--   **Application Server:** Apache Tomcat 10.x (for SOAP WAR deployment)
+-   **Application Server:** Apache Tomcat 9.x (for SOAP WAR deployment)
 -   **Database:** PostgreSQL 17.5
 -   **Message Broker:** RabbitMQ ESB
 -   **BPEL Engine:** Apache ODE
@@ -70,7 +70,7 @@ DB_NAME_CATALOG=globalbooks_catalog
 DB_NAME_ORDERS=globalbooks_orders
 DB_NAME_PAYMENTS=globalbooks_payments
 DB_NAME_SHIPPING=globalbooks_shipping
-DB_USERNAME=admin
+DB_USERNAME=postgres
 DB_PASSWORD=secure_password
 
 # Local RabbitMQ
@@ -105,9 +105,9 @@ BPEL_SERVICE_URL=http://localhost:8084/ode
 1.  **Install PostgreSQL:** If not already installed, follow the instructions in `local-setup/database/postgresql-setup.md`.
 2.  **Create Databases:** Execute the SQL script to create the necessary databases:
     ```bash
-    psql -U admin -f local-setup/database/init-scripts/create-databases.sql
+    psql -U postgres -f local-setup/database/init-scripts/create-databases.sql
     ```
-    (Replace `admin` with your PostgreSQL superuser if different).
+    (Replace `postgres` with your PostgreSQL superuser if different).
 
 ### 4. RabbitMQ Setup
 

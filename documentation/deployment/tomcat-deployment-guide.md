@@ -1,10 +1,10 @@
 # Tomcat Deployment Guide
 
-This guide provides instructions for deploying the `catalog-service` (SOAP service) to a local Apache Tomcat 10.x server.
+This guide provides instructions for deploying the `catalog-service` (SOAP service) to a local Apache Tomcat 9.x server.
 
 ## Prerequisites
 
--   Apache Tomcat 10.x installed and configured.
+-   Apache Tomcat 9.x installed and configured.
 -   `catalog-service.war` file built and available in `services/catalog-service/target/`.
 
 ## Deployment Steps

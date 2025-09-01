@@ -34,7 +34,7 @@ Modern Clients -> REST OrdersService (Spring Boot Local) <-> BPEL Orchestration 
     -   **OpenJDK 18:** For all REST microservices.
 -   **SOAP:** JAX-WS (Contract-First)
 -   **REST:** Spring Boot 3.x
--   **Application Server:** Apache Tomcat 10.x
+-   **Application Server:** Apache Tomcat 9.x
 -   **Database:** PostgreSQL 17.5
 -   **Message Broker:** RabbitMQ
 -   **BPEL Engine:** Apache ODE
@@ -50,7 +50,7 @@ The project will be implemented in the following phases:
 1.  **Install Tools:**
     *   Install JDK 8, OpenJDK 18, Maven 3.8+, and set `JAVA_HOME` to OpenJDK 18.
     *   **Note:** Please provide the path to your JDK 8 installation.
-    *   Install Apache Tomcat 10.x.
+    *   Install Apache Tomcat 9.x.
     *   Install PostgreSQL 17.5.
     *   Install RabbitMQ (or use Docker).
     *   Install Apache ODE.
