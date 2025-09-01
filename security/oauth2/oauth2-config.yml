@@ -1,4 +1,4 @@
 oauth2:
   client-id: globalbooks-client
-  client-secret: your-secret-here
+  client-secret: your-secret
   token-uri: http://localhost:9000/oauth2/token
