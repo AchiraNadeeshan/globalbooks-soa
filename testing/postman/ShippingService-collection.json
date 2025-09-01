@@ -6,7 +6,7 @@
     },
     "item": [
         {
-            "name": "Ship Order (Triggered by RabbitMQ)",
+            "name": "Shipping Service Health Check",
             "request": {
                 "method": "GET",
                 "header": [],

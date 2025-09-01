@@ -6,7 +6,7 @@
     },
     "item": [
         {
-            "name": "Process Payment (Triggered by RabbitMQ)",
+            "name": "Payments Service Health Check",
             "request": {
                 "method": "GET",
                 "header": [],

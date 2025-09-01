@@ -6,6 +6,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrderService {
 
@@ -19,5 +21,9 @@ public class OrderService {
         Order newOrder = orderRepository.save(order);
         rabbitTemplate.convertAndSend("orders", "order.created", newOrder);
         return newOrder;
+    }
+
+    public Optional<Order> findById(Long id) {
+        return orderRepository.findById(id);
     }
 }

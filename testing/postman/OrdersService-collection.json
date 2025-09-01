@@ -13,22 +13,56 @@
                     {
                         "key": "Content-Type",
                         "value": "application/json"
-                    },
-                    {
-                        "key": "Authorization",
-                        "value": "Bearer {{oauth2_token}}"
                     }
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"isbn\": \"1234567890\",\n    \"quantity\": 1}"
+                    "raw": "{\n    \"isbn\": \"1234567890\",\n    \"quantity\": 1\n}"
                 },
                 "url": {
                     "raw": "http://localhost:8081/v1/orders",
                     "protocol": "http",
-                    "host": ["localhost"],
+                    "host": [
+                        "localhost"
+                    ],
                     "port": "8081",
-                    "path": ["v1", "orders"]
+                    "path": [
+                        "v1",
+                        "orders"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "var jsonData = pm.response.json();",
+                            "pm.environment.set(\"order_id\", jsonData.id);"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Order by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8081/v1/orders/{{order_id}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8081",
+                    "path": [
+                        "v1",
+                        "orders",
+                        "{{order_id}}"
+                    ]
                 }
             },
             "response": []
