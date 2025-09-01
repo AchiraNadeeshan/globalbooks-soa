@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <soapui-project name="CatalogService" resourceRoot="" soapui-version="5.7.0" xmlns="http://eviware.com/soapui/config">
-  <interface xsi:type="wsdlInterface" wsdl="http://localhost:8080/catalog-service/CatalogService?wsdl" name="CatalogServiceSoapBinding" bindingName="CatalogServiceSoapBinding" serviceName="CatalogService" portName="CatalogServicePort" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <interface xsi:type="wsdlInterface" wsdl="http://localhost:8084/catalog-service/CatalogService?wsdl" name="CatalogServiceSoapBinding" bindingName="CatalogServiceSoapBinding" serviceName="CatalogService" portName="CatalogServicePort" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <operation name="getBookDetails" is  "request-response">
       <request name="getBookDetails Request" outgoingWss="UsernameTokenPolicy">
         <con:setting id="@name">getBookDetails Request</con:setting>
