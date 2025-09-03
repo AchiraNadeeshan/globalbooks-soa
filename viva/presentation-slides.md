@@ -26,7 +26,7 @@
 ## Slide 5: Technology Stack
 
 -   **Core:** Java (JDK 8 & 18), Spring Boot 3.x, JAX-WS
--   **Infrastructure:** PostgreSQL 17.5, RabbitMQ, Apache Tomcat 10.x, Apache ODE
+-   **Infrastructure:** PostgreSQL 17.5, RabbitMQ, Apache Tomcat 9.x, Apache ODE
 -   **Security:** WS-Security, Spring Security OAuth2
 -   **DevOps:** OpenTofu, GitHub Actions
 
