@@ -12,15 +12,7 @@ The system is designed to process orders, leveraging:
 
 ## Architecture Diagram
 
-```
-Legacy Clients → SOAP CatalogService (Java WAR on Local Tomcat)
-                        ↓
-Modern Clients → REST OrdersService (Spring Boot Local) ←→ BPEL Orchestration (Apache ODE)
-                        ↓
-                Local RabbitMQ ESB Messaging
-                        ↓
-    PaymentsService ←→ ShippingService (Spring Boot Local Applications)
-```
+![architecture-diagram](diagram.png)
 
 ## Technology Stack
 
